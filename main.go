@@ -1,9 +1,28 @@
 package main
 
 import (
-	"github.com/spin-org/thermomatic/internal/common"
+	"fmt"
+	"os"
+	"bufio"
+	"time"
+	"thermomatic/internal/common"
+	"thermomatic/internal/server"
+	"thermomatic/internal/simulator"
 )
 
 func main() {
-	panic(common.ErrNotImplemented)
+
+	go server.StartServer( common.CONN_HOST, common.CONN_PORT )
+
+	time.Sleep(250 * time.Millisecond)
+
+	go simulator.StartSimulator()
+
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter text: ")
+	reader.ReadString('\n')
+
 }
+
+
+
