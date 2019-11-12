@@ -1,9 +1,26 @@
-// Package common implements utilities & functionality commonly consumed by the
-// rest of the packages.
 package common
 
-import "errors"
+import (
+	"time"
+)
 
-// ErrNotImplemented is raised throughout the codebase of the challenge to
-// denote implementations to be done by the candidate.
-var ErrNotImplemented = errors.New("not implemented")
+const (
+    CONN_HOST = "localhost"
+    CONN_PORT = "1337"
+    TCP_CONN_TYPE = "tcp"
+	SIMULATOR_NODES = 10
+	LOGIN_TIMEOUT = 1 * time.Second
+	READIMG_TIMEOUT = 2 * time.Second
+)
+
+
+func HasLength( data []byte, length int ) ( res bool ) {
+	defer func() {
+		if r := recover(); r != nil {
+			res = false
+		}
+	}()
+	_ = data[length -1]
+	return true
+}
+
