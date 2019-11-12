@@ -1,9 +1,6 @@
 package simulator
 
-//import "net"
 import "fmt"
-//import "bufio"
-//import "os"
 import "time"
 import "thermomatic/internal/common"
 import "thermomatic/internal/client"
